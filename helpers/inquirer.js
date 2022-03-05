@@ -8,31 +8,15 @@ const questions = [
     message: '¿What do yo want to do?',
     choices: [
       {
-        value: '1',
-        name: `${'1.'.green} Create a task`
+        value: 1,
+        name: `${'1.'.green} Search City`
       },
       {
-        value: '2',
-        name: `${'2.'.green} List tasks`
+        value: 2,
+        name: `${'2.'.green} History`
       },
       {
-        value: '3',
-        name: `${'3.'.green} List completed tasks`
-      },
-      {
-        value: '4',
-        name: `${'4.'.green} List pendings tasks`
-      },
-      {
-        value: '5',
-        name: `${'5.'.green} Complete task(s)`
-      },
-      {
-        value: '6',
-        name: `${'6.'.green} Delete task(s)`
-      },
-      {
-        value: '0',
+        value: 0,
         name: `${'0'.red}. Exit`
       },
     ]
@@ -69,17 +53,17 @@ const readInput = async(message) => {
   const question = [
     {
       type: 'input',
-      name: 'description',
+      name: 'city',
       message,
       validate( value ){
-        if( value.length === 0) return 'Please write a description'
+        if( value.length === 0) return 'Please write a city or a place'
         return true;
       }
     }
   ]
 
-  const {description }= await inquirer.prompt(question);
-  return description
+  const { city }= await inquirer.prompt(question);
+  return city
 }
 
 const taskListDelete = async( tasks = [] ) => {
