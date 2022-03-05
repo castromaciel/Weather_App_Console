@@ -27,14 +27,14 @@ const pauseOptions = [
   {
     type: 'input',
     name: 'pause',
-    message: `Presione ${ 'enter'.green } para continuar` 
+    message: `Press ${ 'enter'.green } to continue` 
   }
 ];
 
 const inquirerMenu = async() => {
 
   console.log('========================='.green);
-  console.log('  SELECCIONE UNA OPCION  ');
+  console.log('  SELECT AN OPTION  ');
   console.log('=========================\n'.green);
 
   const {options} = await inquirer.prompt(questions);
@@ -66,14 +66,14 @@ const readInput = async(message) => {
   return city
 }
 
-const taskListDelete = async( tasks = [] ) => {
-  const choices = tasks.map( (task, index) => {
+const listPlaces = async( places = [] ) => {
+  const choices = places.map( (place, index) => {
     
-    i = `${index +1}.`.green
+    const i = `${index +1}.`.green
 
     return {
-      value: task.id,
-      name: `${i} ${task.description}`
+      value: place.id,
+      name: `${i} ${place.name}`
     }
   });
 
@@ -86,7 +86,7 @@ const taskListDelete = async( tasks = [] ) => {
     {
       type: 'list',
       name: 'id',
-      message: 'Delete',
+      message: 'Select place:',
       choices
     }
   ]
@@ -144,4 +144,10 @@ const showChecklist = async( tasks = [] ) => {
 }
 
 
-module.exports = { inquirerMenu, pause, readInput, taskListDelete, confirm, showChecklist }
+module.exports = { 
+  inquirerMenu, 
+  pause, 
+  readInput, 
+  listPlaces, 
+  confirm, 
+  showChecklist }
